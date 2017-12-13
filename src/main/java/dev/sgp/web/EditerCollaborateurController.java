@@ -63,6 +63,7 @@ public class EditerCollaborateurController extends HttpServlet {
 			}
 			resp.sendError(400, message.toString());
 		} else {
+			resp.setStatus(201);
 			resp.getWriter().write("<h1>Édition de collaborateur</h1>");
 			resp.getWriter().write("<p>Matricule="+ matriculeParam + "</p>");
 			resp.getWriter().write("<p>Titre="+ titreParam + "</p>");
