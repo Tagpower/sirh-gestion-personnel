@@ -43,9 +43,18 @@ dist/css/bootstrap.css">
         <i class="fa fa-pencil prefix grey-text"></i>
         <label for="fromAdresse" class="col-md-2 col-form-label">Adresse</label>
         <div class="col-md-10">
-	        <textarea required type="text" id="formAdresse" name="adresse" class=" form-control"></textarea>
+	        <textarea required id="formAdresse" name="adresse" class=" form-control"></textarea>
         </div>
     </div>
+    
+    <div class="form-group-row">
+        <i class="fa fa-user prefix grey-text"></i>
+   	    <label for="formTel" class="col-md-2 col-form-label">Téléphone</label>
+    	<div class="col-md-10">
+	        <input required type="text" id="formTel" name="telephone" class="form-control">
+    	</div>
+    </div>
+    
 
 	<div class="form-group-row">
         <i class="fa fa-user prefix grey-text"></i>

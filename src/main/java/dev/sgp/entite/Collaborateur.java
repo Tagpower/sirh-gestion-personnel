@@ -13,21 +13,27 @@ public class Collaborateur {
 	private String adresse;
 	private String numSecu;
 	private String emailPro;
+	private String telephone;
 	private String photo;
+	private String intitulePoste;
+	private Departement departement;
 	private ZonedDateTime dateHeureCreation;
 	private boolean actif;
 	
 	
-	public Collaborateur(String matricule, String nom, String prenom, LocalDate date_n, String adresse, String numSecu,
-			String emailPro, String photo) {
-		this.matricule = matricule;
+	public Collaborateur(String nom, String prenom, LocalDate date_n, String adresse, String numSecu,
+			String emailPro, String telephone, String photo, String intitule, Departement dept) {
 		this.nom = nom;
 		this.prenom = prenom;
+		this.matricule = (prenom.charAt(0) + nom).toUpperCase();
 		this.date_n = date_n;
 		this.adresse = adresse;
 		this.numSecu = numSecu;
 		this.emailPro = emailPro;
+		this.telephone= telephone;
 		this.photo = photo;
+		this.intitulePoste = intitule;
+		this.departement = dept;
 		this.dateHeureCreation = ZonedDateTime.now();
 		this.actif = true;
 	}
@@ -74,12 +80,39 @@ public class Collaborateur {
 	public void setEmailPro(String emailPro) {
 		this.emailPro = emailPro;
 	}
+	
+	
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
 	public String getPhoto() {
 		return photo;
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+	
+	public String getIntitulePoste() {
+		return intitulePoste;
+	}
+
+	public void setIntitulePoste(String intitulePoste) {
+		this.intitulePoste = intitulePoste;
+	}
+
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
+
 	public ZonedDateTime getDateHeureCreation() {
 		return dateHeureCreation;
 	}

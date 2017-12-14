@@ -15,27 +15,57 @@ dist/css/bootstrap.css">
 	
 	<p>Un autre mini paragraphe de test</p>
 	
-	<%List<Collaborateur> listeCollabs =(List<Collaborateur>)request.getAttribute("listeNoms");
+	<div>
+		<form class="form-inline" id="recherche">
+			<label for="terme">Rechercher un nom ou un prénom qui commence par : </label>
+			<input type="text" id="terme" />
+		
+		
+		
+		</form>
+	</div>
+	
+	
+	
+	
+	<div class="row">
+					
+	<%List<Collaborateur> listeCollabs =(List<Collaborateur>)request.getAttribute("listeCollab");
 	for (Collaborateur c : listeCollabs) {	
 		%>
-		
-		<div class="card" style="width:20rem; margin:5px">
+		<div class="col-md-4">
+		<div class="card" style="width=300px; margin:5px ">
 			<div class="card-header">
-				<%=c.getNom()%> <%=c.getPrenom()%> 
+				<h3><%=c.getNom()%> <%=c.getPrenom()%></h3> 
 			</div>
 			<div class="card-block">
-				<img alt="" src="<%=request.getContextPath()%>img/<%=c.getPhoto()%>"> 
-				<ul>
-					<li><%=c.getEmailPro()%></li>
-					<li><%=c.getAdresse()%></li>
-				</ul>
+				<div class="row">
+					<div class="col-md-3">
+						<img class="img-fluid" style="margin:2px" src="<%=request.getContextPath()%>/img/<%=c.getPhoto()%>"> 
+					</div>
+					<div class="col-md-9">
+						<div class="row">
+							<div class="col">Fonction :</div> <div class="col"><%=c.getIntitulePoste()%></div> 
+						</div>
+						<div class="row">
+							<div class="col">Département :</div> <div class="col"><%=c.getDepartement().getNom()%></div> 
+						</div>
+						<div class="row">
+							<div class="col">Email :</div> <div class="col"><%=c.getEmailPro()%></div> 
+						</div>
+						<div class="row">
+							<div class="col">Téléphone :</div> <div class="col"><%=c.getTelephone()%></div> 
+					</div>
+					</div>
+				</div>
 				<a href="#" class="btn btn-primary" style="text-align:right">Éditer</a>
 			</div>
+		</div>
 		</div>
 	<%
 	}
 	%>
-		
+		</div>
 </body>
 
 </html>

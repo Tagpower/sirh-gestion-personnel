@@ -11,12 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dev.sgp.entite.Collaborateur;
+import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
+import dev.sgp.service.DepartementService;
 import dev.sgp.util.Constantes;
 
 public class AjouterCollaborateurController extends HttpServlet {
 	
 	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;	
+	private DepartementService deptService = Constantes.DEPT_SERVICE;
+	
 	private final String SOCIETE = ResourceBundle.getBundle("application").getString("societe");
 	
 	@Override
@@ -28,15 +32,21 @@ public class AjouterCollaborateurController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		DepartementService ds = new DepartementService();
+
+		
+		
 		String nom = req.getParameter("nom");
 		String prenom = req.getParameter("prenom");
-		String matricule = (prenom.charAt(0) + nom).toUpperCase();
 		LocalDate ddn = LocalDate.parse(req.getParameter("ddn"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		String adresse = req.getParameter("adresse");
 		String numSecu = req.getParameter("numSecu");
 		String email = prenom + "." + nom + "@" + SOCIETE + ".com";
+		String tel = req.getParameter("telephone");
 		String photo = "person.png";
-		//ZonedDateTime dateCreation = ZonedDateTime.now();
+		
+		String intitule = "Développeur";
+		Departement dept = ds.listerDepartements().get(3);
 		
 		
 		
@@ -44,16 +54,14 @@ public class AjouterCollaborateurController extends HttpServlet {
 			resp.sendError(400, "Le numéro de sécurité sociale doit faire 15 caractères");
 		} else {
 				
-			
-			
-			Collaborateur co = new Collaborateur(matricule, nom, prenom, ddn, adresse, numSecu, email, photo);
+			Collaborateur co = new Collaborateur(nom, prenom, ddn, adresse, numSecu, email, tel, photo, intitule, dept);
 			CollaborateurService cs = new CollaborateurService();
 			cs.sauvegarderCollaborateur(co);
 			
-			req.setAttribute("listeNoms", cs.listerCollaborateurs());
-			req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp")
-			.forward(req, resp);
-			resp.sendRedirect("/WEB-INF/views/collab/listerCollaborateurs.jsp");
+			req.setAttribute("listeCollab", cs.listerCollaborateurs());
+			req.setAttribute("listeDept", ds.listerDepartements());
+//			req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp").forward(req, resp);
+			resp.sendRedirect(req.getContextPath()+"/collaborateurs/lister");
 		}
 	}
 	
