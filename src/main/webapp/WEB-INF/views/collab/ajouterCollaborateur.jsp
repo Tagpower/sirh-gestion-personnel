@@ -5,46 +5,63 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SGP - App</title>
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-4.0.0-beta.2-
 dist/css/bootstrap.css">
 </head>
 
 <body>
 
-<form>
+<form id="form" method="post">
 
-    <p class="h5 text-center mb-4">Write to us</p>
+    <h2>Nouveau collaborateur</h2>
 
-    <div class="md-form">
+    <div class="form-group-row">
         <i class="fa fa-user prefix grey-text"></i>
-        <input type="text" id="form3" class="form-control">
-        <label for="form3">Your name</label>
+   	    <label for="formNom" class="col-md-2 col-form-label">Nom</label>
+    	<div class="col-md-10">
+	        <input required type="text" id="formNom" name="nom" class="form-control">
+    	</div>
     </div>
 
-    <div class="md-form">
-        <i class="fa fa-envelope prefix grey-text"></i>
-        <input type="text" id="form2" class="form-control">
-        <label for="form2">Your email</label>
+    <div class="form-group-row">
+        <i class="fa fa-user prefix grey-text"></i>
+   	    <label for="formPrenom" class="col-md-2 col-form-label">Prénom</label>
+    	<div class="col-md-10">
+	        <input required type="text" id="formPrenom" name="prenom" class="form-control">
+    	</div>
     </div>
 
-    <div class="md-form">
-        <i class="fa fa-tag prefix grey-text"></i>
-        <input type="text" id="form32" class="form-control">
-        <label for="form34">Subject</label>
+    <div class="form-group-row">
+        <i class="fa fa-user prefix grey-text"></i>
+   	    <label for="formDate" class="col-md-2 col-form-label">Date de naissance</label>
+    	<div class="col-md-10">
+	        <input required type="date" id="formDate" name="ddn" class="form-control">
+    	</div>
     </div>
 
-    <div class="md-form">
+    <div class="form-group-row">
         <i class="fa fa-pencil prefix grey-text"></i>
-        <textarea type="text" id="form8" class="md-textarea" style="height: 100px"></textarea>
-        <label for="form8">Your message</label>
+        <label for="fromAdresse" class="col-md-2 col-form-label">Adresse</label>
+        <div class="col-md-10">
+	        <textarea required type="text" id="formAdresse" name="adresse" class=" form-control"></textarea>
+        </div>
     </div>
 
-    <div class="text-center">
-        <button class="btn btn-unique">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+	<div class="form-group-row">
+        <i class="fa fa-user prefix grey-text"></i>
+   	    <label for="formNumSecu" class="col-sm-2 col-form-label">Numéro de sécurité sociale</label>
+    	<div class="col-md-10">
+	        <input required type="text" id="formNumSecu" name="numSecu" class="form-control">
+    	</div>
+    </div>
+
+    <div class="text-right">
+        <button id="envoyer" class="btn btn-unique">Créer<i class="fa fa-paper-plane-o ml-1"></i></button>
     </div>
 
 </form>
-<!-- Form contact -->
+
+
 
 </body>
 </html>

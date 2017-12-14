@@ -1,6 +1,7 @@
 package dev.sgp.entite;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 public class Collaborateur {
@@ -18,7 +19,7 @@ public class Collaborateur {
 	
 	
 	public Collaborateur(String matricule, String nom, String prenom, LocalDate date_n, String adresse, String numSecu,
-			String emailPro, String photo, ZonedDateTime dateHeureCreation, boolean actif) {
+			String emailPro, String photo) {
 		this.matricule = matricule;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -27,10 +28,9 @@ public class Collaborateur {
 		this.numSecu = numSecu;
 		this.emailPro = emailPro;
 		this.photo = photo;
-		this.dateHeureCreation = dateHeureCreation;
-		this.actif = actif;
+		this.dateHeureCreation = ZonedDateTime.now();
+		this.actif = true;
 	}
-	
 	
 	public String getMatricule() {
 		return matricule;

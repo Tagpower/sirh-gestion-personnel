@@ -1,3 +1,4 @@
+<%@page import="dev.sgp.entite.Collaborateur"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SGP - App</title>
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-4.0.0-beta.2-
 dist/css/bootstrap.css">
 </head>
 
@@ -14,15 +15,27 @@ dist/css/bootstrap.css">
 	
 	<p>Un autre mini paragraphe de test</p>
 	
-	<ul>
-	<%List<String> listeNoms =(List<String>)request.getAttribute("listeNoms");
-	for (String nom : listeNoms) {	
+	<%List<Collaborateur> listeCollabs =(List<Collaborateur>)request.getAttribute("listeNoms");
+	for (Collaborateur c : listeCollabs) {	
 		%>
-		<li><%= nom %></li>
-		<%
-		}
-		%>
-	</ul>
+		
+		<div class="card" style="width:20rem; margin:5px">
+			<div class="card-header">
+				<%=c.getNom()%> <%=c.getPrenom()%> 
+			</div>
+			<div class="card-block">
+				<img alt="" src="<%=request.getContextPath()%>img/<%=c.getPhoto()%>"> 
+				<ul>
+					<li><%=c.getEmailPro()%></li>
+					<li><%=c.getAdresse()%></li>
+				</ul>
+				<a href="#" class="btn btn-primary" style="text-align:right">Éditer</a>
+			</div>
+		</div>
+	<%
+	}
+	%>
+		
 </body>
 
 </html>
