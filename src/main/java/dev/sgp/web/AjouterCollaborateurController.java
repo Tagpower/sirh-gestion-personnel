@@ -32,7 +32,6 @@ public class AjouterCollaborateurController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		DepartementService ds = new DepartementService();
 
 		
 		
@@ -46,7 +45,7 @@ public class AjouterCollaborateurController extends HttpServlet {
 		String photo = "person.png";
 		
 		String intitule = "Développeur";
-		Departement dept = ds.listerDepartements().get(3);
+		Departement dept = deptService.listerDepartements().get(3);
 		
 		
 		
@@ -55,11 +54,11 @@ public class AjouterCollaborateurController extends HttpServlet {
 		} else {
 				
 			Collaborateur co = new Collaborateur(nom, prenom, ddn, adresse, numSecu, email, tel, photo, intitule, dept);
-			CollaborateurService cs = new CollaborateurService();
-			cs.sauvegarderCollaborateur(co);
 			
-			req.setAttribute("listeCollab", cs.listerCollaborateurs());
-			req.setAttribute("listeDept", ds.listerDepartements());
+			collabService.sauvegarderCollaborateur(co);
+			
+			req.setAttribute("listeCollab", collabService.listerCollaborateurs());
+			req.setAttribute("listeDept", deptService.listerDepartements());
 //			req.getRequestDispatcher("/WEB-INF/views/collab/listerCollaborateurs.jsp").forward(req, resp);
 			resp.sendRedirect(req.getContextPath()+"/collaborateurs/lister");
 		}
