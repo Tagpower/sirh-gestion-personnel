@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import dev.sgp.service.CollaborateurService;
 import dev.sgp.service.DepartementService;
 import dev.sgp.util.Constantes;
 
+@WebServlet("/collaborateurs/ajouter")
 public class AjouterCollaborateurController extends HttpServlet {
 	
 	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;	
@@ -55,7 +57,7 @@ public class AjouterCollaborateurController extends HttpServlet {
 			resp.sendError(400, "Le numéro de sécurité sociale doit faire 15 caractères");
 		} else {
 				
-			Collaborateur co = new Collaborateur(nom, prenom, ddn, adresse, numSecu, email, tel, photo, intitule, dept);
+			Collaborateur co = new Collaborateur(nom, prenom, ddn, adresse, numSecu, email, tel, photo, intitule, dept, "", "", "");
 			
 			collabService.sauvegarderCollaborateur(co);
 			

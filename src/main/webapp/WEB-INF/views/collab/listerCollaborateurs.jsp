@@ -62,7 +62,7 @@ dist/css/bootstrap.css">
 		<div class="col-md-4">
 		<div class="card" style="width=300px; margin:5px ">
 			<div class="card-header">
-				<h3><%=c.getNom()%> <%=c.getPrenom()%></h3> 
+				<h3><%=c.getNom().toUpperCase()%> <%=c.getPrenom()%></h3> 
 			</div>
 			<div class="card-block">
 				<div class="row">

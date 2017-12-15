@@ -19,9 +19,13 @@ public class Collaborateur {
 	private ZonedDateTime dateHeureCreation;
 	private boolean actif;
 	
+	private String banque;
+	private String bic;
+	private String iban;
+	
 	
 	public Collaborateur(String nom, String prenom, LocalDate date_n, String adresse, String numSecu,
-			String emailPro, String telephone, String photo, String intitule, Departement dept) {
+			String emailPro, String telephone, String photo, String intitule, Departement dept, String banque, String bic, String iban) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.matricule = (prenom.charAt(0) + nom).toUpperCase();
@@ -35,6 +39,10 @@ public class Collaborateur {
 		this.departement = dept;
 		this.dateHeureCreation = ZonedDateTime.now();
 		this.actif = true;
+		
+		this.banque = banque;
+		this.bic = bic;
+		this.iban = iban;
 	}
 	
 	public String getMatricule() {
@@ -124,6 +132,32 @@ public class Collaborateur {
 	public void setActif(boolean actif) {
 		this.actif = actif;
 	}
+
+	public String getBanque() {
+		return banque;
+	}
+
+	public void setBanque(String banque) {
+		this.banque = banque;
+	}
+
+	public String getBic() {
+		return bic;
+	}
+
+	public void setBic(String bic) {
+		this.bic = bic;
+	}
+
+	public String getIban() {
+		return iban;
+	}
+
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
+	
+	
 	
 	
 	
