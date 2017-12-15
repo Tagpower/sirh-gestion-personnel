@@ -1,3 +1,4 @@
+<%@page import="dev.sgp.entite.Departement"%>
 <%@page import="dev.sgp.entite.Collaborateur"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
@@ -15,13 +16,38 @@ dist/css/bootstrap.css">
 	
 	<p>Un autre mini paragraphe de test</p>
 	
-	<div>
-		<form class="form-inline" id="recherche">
-			<label for="terme">Rechercher un nom ou un prénom qui commence par : </label>
-			<input type="text" id="terme" />
-		
-		
-		
+	<div class="row">
+		<form id="recherche" method="post">
+			<div class="row">
+				<div class="col-md-4" style="text-align:right">
+					<label for="terme">Rechercher un nom ou un prénom qui commence par : </label>
+				</div>
+				<div class="col-md-2">
+					<input type="text" id="terme" class="form-control " />
+				</div>
+				<div class="col-md-6" style="text-align:center">
+					<a href="#" class="btn btn-secondary" style="text-align:right">Rechercher</a>
+					<input type="checkbox" id="includeInactive" />
+					<label for="includeInactive">Voir les collaborateurs désactivés</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4" style="text-align:right">
+					<label for="includeInactive">Filtrer par département :</label>
+				</div>
+				<div class="col-md-2">
+					<select class="custom-select" id="selectDept">
+						<option value="-1">Tous</option>
+						<%List<Departement> listeDepts =(List<Departement>)request.getAttribute("listeDept");
+						for (Departement d : listeDepts) {	
+						%>
+						<option value="<%d.getId(); %>"> <%=d.getNom() %> </option>
+						<% } %>
+					
+					</select>
+				</div>
+				<div class="col-md-6"></div>
+			</div>
 		</form>
 	</div>
 	
@@ -41,7 +67,7 @@ dist/css/bootstrap.css">
 			<div class="card-block">
 				<div class="row">
 					<div class="col-md-3">
-						<img class="img-fluid" style="margin:2px" src="<%=request.getContextPath()%>/img/<%=c.getPhoto()%>"> 
+						<img class="img-fluid" style="margin:2px;  max-width:75px" src="<%=request.getContextPath()%>/img/<%=c.getPhoto()%>"> 
 					</div>
 					<div class="col-md-9">
 						<div class="row">

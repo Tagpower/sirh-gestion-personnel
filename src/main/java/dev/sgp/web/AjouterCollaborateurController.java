@@ -39,12 +39,14 @@ public class AjouterCollaborateurController extends HttpServlet {
 		String prenom = req.getParameter("prenom");
 		LocalDate ddn = LocalDate.parse(req.getParameter("ddn"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		String adresse = req.getParameter("adresse");
-		String numSecu = req.getParameter("numSecu");
+		//String intitule = req.getParameter("fonction");
+		String intitule = "Développeur";
 		String email = prenom + "." + nom + "@" + SOCIETE + ".com";
 		String tel = req.getParameter("telephone");
+		String numSecu = req.getParameter("numSecu");
 		String photo = "person.png";
 		
-		String intitule = "Développeur";
+		//Departement dept = deptService.listerDepartements().get(Integer.parseInt(req.getParameter("departement")));
 		Departement dept = deptService.listerDepartements().get(3);
 		
 		
