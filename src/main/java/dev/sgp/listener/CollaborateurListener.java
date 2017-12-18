@@ -33,6 +33,7 @@ public class CollaborateurListener implements ServletContextListener {
 		collabService.sauvegarderCollaborateur(new Collaborateur("Algar", "Michael", LocalDate.of(1962, 9, 21), "50 rue du punk", "223456787654321", "olga@toydolls.co.uk", "555666777", "olga.jpg", "Guitariste", deptService.listerDepartements().get(3), "","",""));
 
 		
+		
 	}
 
 	@Override

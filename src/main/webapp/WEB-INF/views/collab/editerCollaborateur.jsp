@@ -7,8 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SGP - App</title>
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-4.0.0-beta.2-
-dist/css/bootstrap.css">
+	<link rel="stylesheet" href=<c:url value="${request.getContextPath()}/bootstrap-4.0.0-beta.2-dist/css/bootstrap.css"/> >
 </head>
 
 <body>
